@@ -32,6 +32,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency('rdoc')
   spec.add_development_dependency('aruba')
   spec.add_development_dependency('rake')
-  spec.add_dependency('methadone', '~> 1.9.2')
   spec.add_development_dependency('test-unit')
+
+  spec.add_dependency('methadone', '~> 1.9.2')
+  spec.add_dependency('sys-filesystem', '~> 1.1.6')
 end

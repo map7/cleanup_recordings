@@ -3,6 +3,7 @@ PATH
   specs:
     cleanup_recordings (0.1.0)
       methadone (~> 1.9.2)
+      sys-filesystem (~> 1.1.6)
 
 GEM
   remote: https://rubygems.org/
@@ -43,6 +44,8 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.5.0)
     rspec-support (3.5.0)
+    sys-filesystem (1.1.7)
+      ffi
     test-unit (3.2.3)
       power_assert
     thor (0.19.4)
