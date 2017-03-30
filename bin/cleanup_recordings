@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'sys/filesystem'
 require 'optparse'
 require 'methadone'
 require 'cleanup_recordings.rb'
@@ -12,6 +13,15 @@ class App
     # your program code here
     # You can access CLI options via
     # the options Hash
+
+    stat = Sys::Filesystem.stat("/home")
+
+    # Get the available space in GB for /home partition
+    md_available = stat.block_size * stat.blocks_available / 1024 / 1024 / 1024
+    puts md_available
+
+    
+
   end
 
   # supplemental methods here
