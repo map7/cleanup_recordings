@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 
+require 'fileutils'
 require 'sys/filesystem'
 require 'optparse'
 require 'methadone'
@@ -17,9 +18,8 @@ class App
     part = options[:partition] || "/home"
     puts "Checking #{part}..."
     
-    stat = Sys::Filesystem.stat(part)
-
     # Get the available space in GB for /home partition
+    stat = Sys::Filesystem.stat(part)
     md_available = stat.block_size * stat.blocks_available / 1024 / 1024 / 1024
     space = (options[:space] || 10).to_i
 
@@ -27,17 +27,29 @@ class App
     puts "\tReserve:   #{space}"
     puts "\tThere is not enough space, let's cleanup" if md_available < space
     
+    files = Dir.glob('/home/hts/*ts').sort_by{|f| File.mtime(f)}.reverse
+
     # Check that available space is at least space otherwise remove files.
     while md_available < space
-      md_available += 5
-      print "."
+      break if files.empty?
+
+      # Remove file
+      file = files.pop
+      puts "Remove #{file}"
+      FileUtils.rm(file)
+
+      # Recalculate and print available space.
+      stat = Sys::Filesystem.stat(part)
+      md_available = stat.block_size * stat.blocks_available / 1024 / 1024 / 1024
+      puts "A: #{md_available} S: #{space}"
       sleep 0.5
     end
 
     if md_available >= space
       puts "\n\nRecordings have been cleaned up"
-      puts "Available now: #{md_available}"
     end
+    
+    puts "Available now: #{md_available}"
   end
 
   # supplemental methods here
