@@ -14,14 +14,30 @@ class App
     # You can access CLI options via
     # the options Hash
 
-    stat = Sys::Filesystem.stat("/home")
+    part = options[:partition] || "/home"
+    puts "Checking #{part}..."
+    
+    stat = Sys::Filesystem.stat(part)
 
     # Get the available space in GB for /home partition
     md_available = stat.block_size * stat.blocks_available / 1024 / 1024 / 1024
-    puts md_available
+    space = (options[:space] || 10).to_i
 
+    puts "\tAvailable: #{md_available}"
+    puts "\tReserve:   #{space}"
+    puts "\tThere is not enough space, let's cleanup" if md_available < space
     
+    # Check that available space is at least space otherwise remove files.
+    while md_available < space
+      md_available += 5
+      print "."
+      sleep 0.5
+    end
 
+    if md_available >= space
+      puts "\n\nRecordings have been cleaned up"
+      puts "Available now: #{md_available}"
+    end
   end
 
   # supplemental methods here
@@ -33,6 +49,8 @@ class App
   # Accept flags via:
   # on("--flag VAL","Some flag")
   # options[flag] will contain VAL
+  on("-s", "--space SPACE", "Space to reserve in GB")
+  on("-p", "--partition PARTITION", "Partition to check (default: /home)")
   #
   # Specify switches via:
   # on("--[no-]switch","Some switch")
