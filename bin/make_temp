@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+# Make some temp files
+
+fallocate -l 10G /home/hts/1.ts
+fallocate -l 10G /home/hts/2.ts
+fallocate -l 10G /home/hts/3.ts
+fallocate -l 10G /home/hts/4.ts
+
+ls -altrh /home/hts
