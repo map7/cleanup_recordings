@@ -22,7 +22,11 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+
+Use -s<GB> to set the space you want to reserve.
+EG: cleaning up to 20GB left.
+: cleanup_recordings -s20
+
 
 ## Development
 
