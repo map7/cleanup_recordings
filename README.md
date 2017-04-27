@@ -1,8 +1,8 @@
 # CleanupRecordings
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/cleanup_recordings`. To experiment with that code, run `bin/console` for an interactive prompt.
+TVHeadend allows you to record TV shows and it stores them in /home/hts. Problem is it doesn't cleanup after itself. 
 
-TODO: Delete this and the text above, and describe your gem
+This allows you to cleanup and set a minimum amount of space you want to leave on that partition.
 
 ## Installation
 
