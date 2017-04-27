@@ -6,26 +6,15 @@ This allows you to cleanup and set a minimum amount of space you want to leave o
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'cleanup_recordings'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
     $ gem install cleanup_recordings
 
 ## Usage
 
 
-Use -s<GB> to set the space you want to reserve.
-EG: cleaning up to 20GB left.
-: cleanup_recordings -s20
+Use -s<GB> to set the space you want to reserve.\\
+EG: cleaning up to 20GB left.\\
+
+    $ cleanup_recordings -s20
 
 
 ## Development
