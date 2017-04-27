@@ -16,6 +16,9 @@ EG: cleaning up to 20GB left.\\
 
     $ cleanup_recordings -s20
 
+Add the following to crontab
+
+    00 00	  * * * root	/usr/local/bin/cleanup_recordings -s20
 
 ## Development
 
@@ -25,5 +28,5 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/cleanup_recordings.
+Bug reports and pull requests are welcome on GitHub at https://github.com/map7/cleanup_recordings.
 
